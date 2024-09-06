@@ -8,7 +8,7 @@ def test_prediction():
     column_names = ['CRIM', 'ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT', 'MEDV']
     
     # Load the dataset
-    df = pd.read_csv('data/housing.csv', header=None, names=column_names, sep='\s+')
+    df = pd.read_csv('data/housing.csv', header=None, names=column_names, sep=r'\s+')
     
     # Define features and target variable
     X = df.drop('MEDV', axis=1)
