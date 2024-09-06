@@ -1,15 +1,11 @@
-import warnings
-warnings.filterwarnings('ignore')
-
+import joblib
 import pandas as pd
-import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-import joblib
 
-def load_data("/home/surajbisht/Desktop/Boston_house_price_prediction/data/housing.csv"):
+def load_data(file_path):
     column_names = ['CRIM', 'ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT', 'MEDV']
-    df = pd.read_csv(file_path, header=None, names=column_names, delim_whitespace=True)
+    df = pd.read_csv(file_path, header=None, names=column_names, sep='\s+')
     return df
 
 def train_model(df):
@@ -26,7 +22,7 @@ def train_model(df):
     return model, X_test, y_test
 
 if __name__ == "__main__":
-    data = load_data('data/housing.csv')
+    file_path = '/home/surajbisht/Desktop/Boston_house_price_prediction/data/housing.csv'  # Replace with your actual path
+    data = load_data(file_path)
     model, X_test, y_test = train_model(data)
     print("Model trained and saved!")
-
